@@ -99,15 +99,17 @@ cuboA = []; //Definir un array Unidimensional
 
 for(var i=0; i<3; i++){
  cuboA.push(cubo(dimX, dimY, dimZ, 0xFFDD00, 'Physical', false));
+} 
 
-}
-//TRANSLATE CONSULTADO DE: https://threejs.org/docs/#api/en/core/Object3D.translateY 
-   
-// position the cube
- 
+//TRANSLATE   
 cuboA[0].translateX(delta);
 cuboA[1].translateY(delta);
-cuboA[2].translateZ(delta);   
+cuboA[2].translateZ(delta);
+/*En este caso se uso el translate especificando le eje en el que se desea hacer la traslacion, y recibe la varible delta que es el valor
+de cuanto queremos trasladar la figura*/
+
+// position the cube
+    
 //cuboA[0].position.set(-4, 9, 0);
 
  
@@ -124,7 +126,8 @@ cuboA[2].translateZ(delta);
 // position and point the camera to the center of the scene
     
 camera.position.set(-30, 40, 30);
-    camera.lookAt(scene.position);
+   
+ camera.lookAt(scene.position);
 
     
 // add the output of the renderer to the html element
