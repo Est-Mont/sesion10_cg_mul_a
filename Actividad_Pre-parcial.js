@@ -74,7 +74,7 @@ scene.add(axes);
 // create the ground plane
     
 var planeGeometry = new THREE.PlaneGeometry(60, 20);
-    
+
 var planeMaterial = new THREE.MeshBasicMaterial({
         color: 0xAAAAAA
     });
@@ -96,31 +96,43 @@ plane.position.set(15, 0, 0);
     
 
 // create a cube
-
 cuboA = []; //Definir un array Unidimensional
-colorA=[0xF30C0C, 0xBEF30C, 0x0037FF]; //Para diferenciar los colores
+colorA=[0xF30C0C, 0xBEF30C, 0x00FFFF]; //Para diferenciar los colores
 
+
+//VALIDACIÓN DEL ANGULO INGRESADO
+angulo = prompt("Angulo en grados:"); // Se pide en angulo al usuario.
+angulo_rad = (angulo)*((2*Math.PI)/(360)); //Conversión de grados a radianes.
+if(angulo != null){
+    alert("Su angulo es: " + angulo);
+    }   
+else {
+    alert("Escriba un angulo por favor");
+    }
+
+//INSERTAR LOS CUBOS
 for(var i=0; i<3; i++){
- cuboA.push(cubo(dimX, dimY, dimZ, colorA[i], 'Lambert', false));
-} 
-
-//ROTATE
-angulo = (Math.PI/2);
-cuboA[0].rotateZ(angulo);
-cuboA[1].rotateX(angulo);
-cuboA[2].rotateY(angulo);
+cuboA.push(cubo(dimX, dimY, dimZ, colorA[i], 'Lambert', false));
+}
 
 //TRANSLATE   
 cuboA[0].translateX(delta);
 cuboA[1].translateY(delta);
 cuboA[2].translateZ(delta);
 
-// position the cube
-    
-//cuboA[0].position.set(-4, 9, 0);
+//ELEGIR EL EJE
+eje = Math.round(Math.random() * (2 - 0) + 0); //elegir el eje aleatoriamente 
+//EJEGIR EL CUBO
+alea=Math.round(Math.random() * (2 - 0) + 0); //numero aleatorio entre 0 y 2.
 
- 
-//cuboA[1].position.set(-4, 18, 0);
+
+if (eje=0){
+    cuboA[alea].rotateX(angulo_rad);  
+    }else if (eje=1){
+    cuboA[alea].rotateY(angulo_rad);   
+    }else if (eje=2){
+    cuboA[alea].rotateZ(angulo_rad);   
+    }
 
 
 //Luz (requerida para el material MeshLambertMaterial)
